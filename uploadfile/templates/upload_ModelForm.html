@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+
+	{% block content %}
+
+	{% if error_message %}<p><strong> {{ error_message }} </strong></p>{% endif %}
+
+    <form method = "post" enctype="multipart/form-data"> 
+        {% csrf_token %} 
+        {{ form.as_p }} 
+        <button type="submit">Split!</button> 
+    </form> 
+    
+    {% endblock %}
+

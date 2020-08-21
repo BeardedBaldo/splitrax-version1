@@ -1,0 +1,9 @@
+<h2>Upload Track</h2>
+
+{% if error_message %}<p><strong> {{ error_message }} </strong></p>{% endif %}
+
+<form method = "post" enctype="multipart/form-data">
+	{% csrf_token %}
+	<input type ="file" name = "track">
+	<button type = "submit"> Split! </button>
+</form>

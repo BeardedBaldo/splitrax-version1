@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+<body>
+	{% block content %}
+		<p>Download of your files will start automatically or 
+		you can download the files from <a href = "{{ZippedFile}}" download = "{{FileName}}">here</a></p>
+		<hr>
+		<a href= "{% url 'uploadfile:Upload' %}">Split Again</a>
+
+
+	{% endblock %}
+
+</body>
