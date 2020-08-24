@@ -1,0 +1,30 @@
+.upload {
+	background-color: #000000;
+	color: white;
+	padding: 0px 15px;
+	transition-duration: 0.4s;
+	border: none;
+	border-radius: 12px;
+	font-size: 30px;
+}
+
+.upload:hover {
+	box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+}
+
+body {
+	font-family: 'Gurajada', Calibri;
+}
+
+.navbar-custom {
+	font-size: 30px;
+	padding: 0px 20px;
+	background-color: #000000;
+	color: white;
+}
+
+.navbar-logo-custom {
+	font-size: 35px;
+	padding: 0px 20px;
+	color: white;
+}
