@@ -1,14 +1,62 @@
 {% extends "base.html" %}
-
+{% load crispy_forms_tags %}
 
 	{% block content %}
 
-	{% if error_message %}<p><strong> {{ error_message }} </strong></p>{% endif %}
-
+	<div class = "container">
+		<div class = "row justify-content-center">
+			{% if error_message %}<p><strong> {{ error_message }} </strong></p>{% endif %}
+		</div>
+	</div>
     <form method = "post" enctype="multipart/form-data"> 
-        {% csrf_token %} 
-        {{ form.as_p }} 
-        <button type="submit">Split!</button> 
+    {% csrf_token %} 
+		<div class = "container">
+			<div class = "row justify-content-center">
+				<div class="form-group">
+					<div class="input-group">
+							
+			    		{{ form.audio|as_crispy_field }}
+					</div>
+				</div>
+				<div class = "col-md-2">
+		        <p> OR </p>
+				</div>
+				<div class = "form-group">
+					<div class = "col-auto">
+			        	{{ form.YTLink|as_crispy_field }} 
+					</div>
+				</div>
+			</div>
+			<br>
+			<div class = "row justify-content-center">
+				<div class="form-group">
+					<div class="input-group">
+							
+			    		{{ form.OutputType|as_crispy_field }}
+					</div>
+				</div>
+				<div class = "col-auto">
+		        	{{ form.NStems|as_crispy_field }} 
+				</div>
+
+			</div>
+			<br>
+
+			<div class = "row justify-content-center">
+				<div class = "col-auto">
+					<p>  </p>
+				</div>
+				<div class = "col-auto">
+					<button type="submit">Split!</button> 	
+				</div>
+				<div class = "col-auto">
+					<p>  </p>
+				</div>
+			</div>
+
+		</div>	        
+	        
+
     </form> 
     
     {% endblock %}

@@ -1,4 +1,4 @@
-from django.http import HttpResponseRedirect, HttpResponse
+from django.http import HttpResponseRedirect, HttpResponse, FileResponse
 from django.shortcuts import render
 from .forms import TrackForm
 from django.conf import settings
@@ -51,10 +51,11 @@ def ModelFormsUpload(request):
                 ZippedFile = shutil.make_archive(FolderName, "zip", FolderName)
 
 
-                Fl = open(ZippedFile, "r")
-                response = HttpResponse(ZippedFile, content_type = "application/zip-download")
-                response["Content-Disposition"] = "attachment; filename=%s" % ZippedFile
-                return response
+                Fl = open(ZippedFile, "rb")
+                # response = HttpResponse(ZippedFile, content_type = "application/zip-download")
+                # response["Content-Disposition"] = "attachment; filename=%s" % ZippedFile
+                # return response
+                return FileResponse(Fl, as_attachment = True)
                 # context["ZippedFile"] = ZippedFile
                 # context["Filename"] = FolderName
 
