@@ -7,13 +7,13 @@ FileTypes = [
 ]
 
 NumberofStems = [
-	('2stems','2 stems'),
-	('4stems','4 stems'),
-	('5stems','5 stems'),
+	('2stems','2 stems - karaoke - vocals and instrumentals'),
+	('4stems','4 stems - vocals, bass, drums and others'),
+	('5stems','5 stems - vocals, bass, drums, piano and others'),
 ]
 
 class track(models.Model):
-	audio = models.FileField(null = True, blank= True)
-	YTLink = models.URLField(null = True, blank = True)
+	audio = models.FileField(null = True, blank= True, verbose_name = "")
+	YTLink = models.URLField(null = True, blank = True, verbose_name = "")
 	OutputType = models.CharField(max_length = 5, null = True)
 	NStems = models.CharField(max_length = 10, null = True)

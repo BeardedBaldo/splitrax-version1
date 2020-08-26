@@ -40,6 +40,7 @@ INSTALLED_APPS = [
 
     ## third party
     'crispy_forms',
+    'widget_tweaks',
 
     ## own
     'pages',

@@ -9,9 +9,17 @@ class TrackForm(forms.ModelForm):
 		fields = ['YTLink', 'audio', 'OutputType', 'NStems']
 
 		widgets = {
-			'audio': forms.FileInput(attrs={'accept': 'audio/*'}),
+			'audio': forms.FileInput(attrs={'accept': 'audio/*', 'placeholder':'Choose an audio file...'}),
 			'OutputType': forms.Select(choices = FileTypes),
-			'NStems': forms.Select(choices = NumberofStems)
+			'NStems': forms.Select(choices = NumberofStems),
+			'YTLink': forms.TextInput(attrs={'placeholder': 'Enter Youtube link...'})
+		}
+
+		labels = {
+			'OutputType' : "Format",
+			'NStems': "Output Type",
+			'audio' : "Upload Audio File:",
+			'YTLink': "Youtube Link:"
 		}
 
 	def clean(self):

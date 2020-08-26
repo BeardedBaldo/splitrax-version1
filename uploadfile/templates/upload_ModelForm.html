@@ -1,65 +1,81 @@
 {% extends "base.html" %}
 {% load crispy_forms_tags %}
 {% load static %}
+{% load widget_tweaks %}
 
 	{% block content %}
 
 
 	<div class = "container">
 		<div class = "row justify-content-center">
-			{% if error_message %}<p><strong> {{ error_message }} </strong></p>{% endif %}
+			<div class = "title-message-container">
+				<p class = "title-message"><strong>Get MultiTracks from any song using Splitrax(Powered by Spleeter)</strong></p>
+<!-- 				<br>
+				<br> -->
+			</div>
 		</div>
 	</div>
-    <form method = "post" enctype="multipart/form-data"> 
-    {% csrf_token %} 
-		<div class = "container">
-			<div class = "row justify-content-center">
-				<div class="form-group">
-					<div class="input-group">
-							
-			    		{{ form.audio|as_crispy_field }}
+
+ 	<br>
+	<div class = "container">
+		<div class = "row justify-content-center">
+			<div class = "error-message">
+			{% if error_message %}<p><strong> {{ error_message }} </strong></p>{% endif %}
+			</div>
+		</div>
+	</div>
+	<div class = "container">
+	    <form method = "post" enctype="multipart/form-data"> 
+	    {% csrf_token %} 
+			<div class = "container">
+				<div class = "row justify-content-center">
+					<div class="form-group">
+						<div class="col-auto input-container input-file">						
+				    		{{ form.audio|add_class:"input"|as_crispy_field }}
+						</div>
+					</div>
+					<p class="or-text">OR</p>
+					<!-- <div class = "form-group">
+						<div class = "col-md-2 or-text">
+				        <p>OR</p>
+						</div>
+					</div> -->
+					<div class = "form-group">
+						<div class = "col-auto input-container">
+				        	{{ form.YTLink|add_class:"input"|as_crispy_field }} 
+						</div>
 					</div>
 				</div>
-				<div class = "col-md-2">
-		        <p> OR </p>
+
+				<div class = "row justify-content-center">
+					<div class = "col-auto drop-down-container">
+			        	{{ form.OutputType|add_class:"drop-down"|as_crispy_field }}
+					</div>
+
+					<div class = "col-auto drop-down-container">
+			        	{{ form.NStems|add_class:"drop-down"|as_crispy_field }} 
+					</div>
+
 				</div>
-				<div class = "form-group">
+				<br>
+
+				<div class = "row justify-content-center">
+					<!-- <div class = "col-auto">
+						<p>  </p>
+					</div>
+					<div class = "col-auto"> -->
+						<button class = "upload" type="submit">Split!</button> 	
+					<!-- </div>
 					<div class = "col-auto">
-			        	{{ form.YTLink|as_crispy_field }} 
-					</div>
-				</div>
-			</div>
-			<br>
-			<div class = "row justify-content-center">
-				<div class="form-group">
-					<div class="input-group">
-							
-			    		{{ form.OutputType|as_crispy_field }}
-					</div>
-				</div>
-				<div class = "col-auto">
-		        	{{ form.NStems|as_crispy_field }} 
+						<p>  </p>
+					</div> -->
 				</div>
 
-			</div>
-			<br>
+			</div>	        
+		   	    
 
-			<div class = "row justify-content-center">
-				<div class = "col-auto">
-					<p>  </p>
-				</div>
-				<div class = "col-auto">
-					<button class = "upload" type="submit">Split!</button> 	
-				</div>
-				<div class = "col-auto">
-					<p>  </p>
-				</div>
-			</div>
+	    </form> 
 
-		</div>	        
-	        
-
-    </form> 
-    
+	</div>    
     {% endblock %}
 
