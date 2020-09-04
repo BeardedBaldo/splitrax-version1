@@ -17,3 +17,9 @@ class track(models.Model):
 	YTLink = models.URLField(null = True, blank = True, verbose_name = "")
 	OutputType = models.CharField(max_length = 5, null = True)
 	NStems = models.CharField(max_length = 10, null = True)
+
+	def save(self, *args, **kwargs):
+    try:
+        super(track, self).save(*args, **kwargs)
+    except Exception as e:
+        raise Exception("Something went wrong while saving the component. Details - %s" % (e.message,))

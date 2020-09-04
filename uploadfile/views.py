@@ -1,6 +1,7 @@
 from django.http import HttpResponseRedirect, HttpResponse, FileResponse
 from django.shortcuts import render
 from .forms import TrackForm
+from .models import track
 from django.conf import settings
 from django.core.files.storage import FileSystemStorage
 from django.contrib import messages
@@ -8,24 +9,40 @@ from .SpleeterCodePy import SpleeterRun
 from .YoutubeDownload import YoutubeDownload
 import shutil
 import os
+from django.views.decorators.csrf import csrf_protect
 import datetime
 
 
 
 
-
+@csrf_protect
 def ModelFormsUpload(request):
     context = {}
+    print("reached level 1")
     if request.method == "POST":
         try:
+            print("reached level 2")
             UploadForm = TrackForm(request.POST, request.FILES) ## Get submit request
+            print(request.POST)
+            ClassCheck = track(audio = request.FILES.get('audio'), YTLink = request.POST.get('YTLink'), NStems = request.POST.get('NStems'), OutputType = request.POST.get('OutputType') )
+            print(ClassCheck.audio)
+            print(ClassCheck.YTLink)
+            print(ClassCheck.NStems)
+            print(ClassCheck.OutputType)
+            print(request.FILES)
+            print(UploadForm.is_valid())
+            print(TrackForm(request.POST, request.FILES))
+            #print("uploadformnstems: --" + UploadForm.cleaned_data['Nstems'])
+            #print("uploadformaudio: --" + UploadForm.cleaned_data['audio'])
+            #print("isvalidcheck: --" + Upload.is_valid())
+            print("reached level 3")
             if UploadForm.is_valid():
                 UploadForm.save()  ## save file 
-
+                print("reached level 4")
                 Media_Root = getattr(settings, "MEDIA_ROOT", None) ## get location of media folder
                 FileType = UploadForm.cleaned_data['OutputType']
                 NStems = UploadForm.cleaned_data['NStems']
-
+                print("reached level 5")
                 if UploadForm.cleaned_data['YTLink'] is not None and UploadForm.cleaned_data['audio'] is None:
                     url = UploadForm.cleaned_data['YTLink']
                     
