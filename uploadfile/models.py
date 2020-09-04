@@ -19,7 +19,7 @@ class track(models.Model):
 	NStems = models.CharField(max_length = 10, null = True)
 
 	def save(self, *args, **kwargs):
-    	try:
-        	super(track, self).save(*args, **kwargs)
-    	except Exception as e:
-        	raise Exception("Something went wrong while saving the component. Details - %s" % (e.message,))
+		try:
+			super(track, self).save(*args, **kwargs)
+		except Exception as e:
+			raise Exception ("Something went wrong" + e.message)
