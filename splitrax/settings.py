@@ -26,7 +26,7 @@ SECRET_KEY = 'bcny+0q3!sazv%3z2h!2f#ia=)-h$8z_o@a2y)1-fh4@g%-#tm'
 DEBUG = True
 
 
-ALLOWED_HOSTS = ['127.0.0.1','18.218.177.223','ec2-3-137-142-241.us-east-2.compute.amazonaws.com']
+ALLOWED_HOSTS = ['127.0.0.1','3.130.245.160','www.splitrax.com','ec2-3-137-142-241.us-east-2.compute.amazonaws.com']
 
 
 
@@ -131,12 +131,12 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-STATIC_ROOT = "/static_prod/"
+STATIC_ROOT = "/home/ubuntu/splitrax/splitrax-version1/static_prod/"
 
-STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'static')
-]
-
+STATICFILES_FINDERS = (
+'django.contrib.staticfiles.finders.FileSystemFinder',
+'django.contrib.staticfiles.finders.AppDirectoriesFinder'
+)
 
 
 ## setting media
