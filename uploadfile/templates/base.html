@@ -14,6 +14,7 @@
     <meta name = "viewport" content="width-device-width, initial-scale=1, maximim-scale=1, minimum-scale=1" />
 
 
+
 </head> 
 <body> 
 	<nav class="navbar navbar-expand-lg navbar-dark navbar-custom" style = "background-color: #000000;">
@@ -42,19 +43,19 @@
 
 	    <ul class = "nav navbar-nav navbar-right">
 	    	<li class="nav-item active">
-        		<a class="nav-link" href="#">Home<span class="sr-only">(current)</span></a>
+        		<a class="nav-link" href="{% url 'uploadfile:Upload' %}">Home<span class="sr-only">(current)</span></a>
       		</li>
 	    	<li class="nav-item active">
-        		<a class="nav-link" href="#">About<span class="sr-only">(current)</span></a>
+        		<a class="nav-link" href="{% url 'uploadfile:About' %}">About<span class="sr-only">(current)</span></a>
       		</li>
       		<li class="nav-item active">
-        		<a class="nav-link" href="#">FAQ</a>
+        		<a class="nav-link" href="{% url 'uploadfile:Faq' %}">FAQ</a>
       		</li>
       		<li class="nav-item active">
-        		<a class="nav-link" href="#">Contact</a>
+        		<a class="nav-link" href="{% url 'uploadfile:Contact' %}">Contact</a>
       		</li>
       		<li class="nav-item active">
-        		<a class="nav-link" href="#">T&C</a>
+        		<a class="nav-link" href="{% url 'uploadfile:Terms' %}">T&C</a>
       		</li>
     	</ul>
 

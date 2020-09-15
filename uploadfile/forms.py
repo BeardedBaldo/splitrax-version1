@@ -1,5 +1,5 @@
 from django import forms 
-from .models import track, FileTypes, NumberofStems
+from .models import track, FileTypes, NumberofStems, ContactModel
 
 class TrackForm(forms.ModelForm):
 
@@ -34,3 +34,24 @@ class TrackForm(forms.ModelForm):
 			raise forms.ValidationError("Submit either Youtube link or Audio file")
 
 		return cleaned_data
+
+
+class ContactForm(forms.ModelForm):
+
+	class Meta:
+		model = ContactModel
+
+		fields = ['FromEmail', 'Subject', 'Message']
+
+		widgets = {
+			'FromEmail': forms.TextInput(attrs={'placeholder': 'Enter your email id:'}),
+			'Subject': forms.TextInput(attrs={'placeholder': 'Enter subject...'}),
+			'Message': forms.Textarea(attrs={'placeholder': 'Enter message...', 'rows':5})
+		}
+
+		labels = {
+			'FromEmail': 'Email ID:',
+			'Subject': 'Subject(Optional):',
+			'Message': 'Message:'
+		}
+

@@ -126,17 +126,38 @@ USE_L10N = True
 USE_TZ = True
 
 
+## contact email form details
+DEFAULT_FROM_EMAIL = ''
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
+## while deploying to production deploy below code
+
+# STATIC_URL = '/static/'
+
+# STATIC_ROOT = os.path.join(BASE_DIR, 'static_prod')
+
+# STATICFILES_FINDERS = (
+# 'django.contrib.staticfiles.finders.FileSystemFinder',
+# 'django.contrib.staticfiles.finders.AppDirectoriesFinder'
+# )
+
+
+## use below code only for testing and development
+
 STATIC_URL = '/static/'
 
-STATIC_ROOT = "/home/ubuntu/splitrax/splitrax-version1/static_prod/"
+STATIC_ROOT = "/static_prod/"
 
-STATICFILES_FINDERS = (
-'django.contrib.staticfiles.finders.FileSystemFinder',
-'django.contrib.staticfiles.finders.AppDirectoriesFinder'
-)
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'static')
+]
+
+
+
 
 
 ## setting media

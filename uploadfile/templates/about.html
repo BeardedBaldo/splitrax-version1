@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+{% load static %}
+{% load widget_tweaks %}
+
+
+	{% block content %}
+		<div class="container">
+			<div class = "row justify-content-center">
+				<h1 class="about-title"><strong>About</strong></h1>
+			</div>
+
+			<div class = "row about-text">
+			<p>Splitrax is a web application that can split your audio tracks into multi-tracks or stems. Currently, it supports splitting outputs for 2 stems(karaoke) - vocals + instrumental, 4 stems - vocals, bass, drums and others, and 5 stems - vocals, bass, drums, piano and others. The splitting is achieved by using a machine learning model called Spleeter, developed by the folks at Deezer. Check them out here - <a href = "https://github.com/deezer/spleeter" target="_blank">spleeter </a>.  The splitting quality is not perfect, but it is one of the best models, if not the best model out there in terms of splitting audio tracks into stems. So, have at it and see for yourself. </p>
+
+			<p>Please read the <a href = "{% url 'uploadfile:Terms' %}" target="_blank">terms and conditions</a> before use. If you have any questions, please refer to the <a href = "{% url 'uploadfile:Faq' %}" target="_blank">FAQs</a> page. If your question is not listed there, hit me up from the <a href= "{% url 'uploadfile:Contact' %}" target="_blank">contact</a> page. I'll try my best to respond!</p>
+			
+			</div>
+
+		</div>
+
+	{% endblock %}
